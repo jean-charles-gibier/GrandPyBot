@@ -13,7 +13,7 @@ jobs:
       - python/save-cache
       - run:
           command:
-          python3 -m pip install pytest-testconfig
+          python3 -m pip install pytest-testconfig &&
           pytest
           name: Test
 
