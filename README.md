@@ -1,4 +1,5 @@
 # GrandPyBot
+status : [![CircleCI](https://circleci.com/gh/jean-charles-gibier/GrandPyBot.svg?style=shield)](https://app.circleci.com/pipelines/github/jean-charles-gibier/GrandPyBot)
 
 ## La démarche
 Bon ... C'est un projet axé sur le TDD principalement, donc dans un premier temps on va brancher Circle-ci sur ce projet. <br>
