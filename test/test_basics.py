@@ -15,6 +15,7 @@ class TestBasics4validationCI(unittest.TestCase):
     - Test de variable d'environnement.
 
     """
+
     def test_split(self):
         """
         Just test the test
@@ -29,7 +30,7 @@ class TestBasics4validationCI(unittest.TestCase):
         """
         which environement
         """
-#        self.assertEqual(os.environ.get('GPY_ENV'), 'PROD')
+        #        self.assertEqual(os.environ.get('GPY_ENV'), 'PROD')
         self.assertEqual('PROD', 'PROD')
 
     def test_appmodule(self):
@@ -40,7 +41,6 @@ class TestBasics4validationCI(unittest.TestCase):
             os.path.dirname(__file__)
         )
         self.assertTrue(os.path.exists(os.path.join(testdir, 'gpapp')))
-
 
 
 if __name__ == '__main__':
