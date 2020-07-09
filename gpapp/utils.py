@@ -15,15 +15,16 @@ class Question:
     def __init__(self, question):
         """ init """
         common_words = {'bonjour', 'salut', 'hello', 'ciao', 'yo', 'hi',
-                        'dis', 'moi', 'he', 'au', 'fait', 'ca', 'va',
-                        'bon', 'quel', 'quelle', 'ou', 'est-ce', 'que', 'ce',
+                        'dis', 'moi', 'he', 'au', 'fait', 'ca', 'va', 'se',
+                        'bon', 'quel', 'quelle', 'où', 'est-ce', 'que', 'ce',
                         'connais', 'connaissez', 'sais', 'savez', 'saurais',
-                        'grandpy', 'grand-pere', 'papy', 'cher', 'mec',
-                        'adresse', 'lieu', 'localisation', 'endroit'
+                        'grandpy', 'grand-père', 'papy', 'cher', 'mec',
+                        'adresse', 'lieu', 'localisation', 'endroit', 'trouve',
+                        'aller', 'vers'
                         }
         self.stop_words = set(get_stop_words('fr'))
         self.stop_words.update(common_words)
-        self.original_question = question
+        self.original_question = question.lower()
         self.filtered_question = self.do_filter()
         self.parsed_question = self.do_parse()
         self.shortened_question = self.parsed_question
