@@ -6,3 +6,4 @@ venv
 /.idea
 test/__pycache__
 /test/hello.py
+/Pipfile
