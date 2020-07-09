@@ -15,7 +15,7 @@ jobs:
           command: python3 -m pip install pytest
           name: Install
       - run:
-          command: pytest
+          command: python3 -m pip install pytest && pytest
           name: Test
 
 workflows:
