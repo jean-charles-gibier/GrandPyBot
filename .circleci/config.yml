@@ -12,10 +12,8 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: python3 -m pip install pytest
-          name: Install
       - run:
-          command: python3 -m pip install pytest && pytest
+          command: python3 -m pip install pytest && py.test
           name: Test
 
 workflows:
