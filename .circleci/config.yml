@@ -12,7 +12,7 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: python3 -m pip install pytest && python -m pytest
+          command: python3 -m pip install gunicorn pytest && python -m pytest
           name: Test
 
 workflows:
