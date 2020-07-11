@@ -1,9 +1,8 @@
 """
 vue de l'application
 """
-from flask import Flask
-
-# , render_template, url_for, request
+from flask import Flask, render_template \
+    # , url_for, request
 
 APP = Flask(__name__)
 
@@ -11,12 +10,13 @@ APP = Flask(__name__)
 APP.config.from_object('config')
 
 
-# To get one variable, tape app.config['MY_VARIABLE']
-
-# from .utils import find_content
-
 @APP.route('/')
 @APP.route('/index/')
 def index():
     """ main route """
-    return 'Hello, World!'
+    return make_index()
+
+
+def make_index():
+    """ joue la page d'index """
+    return render_template('index.html')
