@@ -8,3 +8,11 @@ header .intro-text .name {
   font-family: 'Trebuchet MS', Helvetica, sans-serif;
   font-size: 15vmin
 }
+
+.form-inline {
+
+    // Input groups need that 100% width though
+    .input-group > .form-control {
+      width: 100%;
+    }
+  }
