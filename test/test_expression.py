@@ -26,8 +26,8 @@ class TestInput(unittest.TestCase):
         # test filter
         str_question = "Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
         question = Question(str_question)
-        self.assertNotEqual(question.get_shortened_question(),
-                            str_question)
+        shortened_question = question.get_shortened_question()
+        self.assertEqual(shortened_question, "openclassrooms")
 
 
 if __name__ == '__main__':
