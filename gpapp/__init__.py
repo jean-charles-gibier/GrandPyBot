@@ -6,7 +6,7 @@ ask_from_cli, passage question from command line
 import click
 
 from .views import APP
-from .utils import Question
+from .question import Question
 
 @APP.cli.command()
 @click.argument("question")

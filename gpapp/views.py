@@ -1,12 +1,12 @@
 """
 vue de l'application
 """
-from flask import Flask, render_template, request
-from .utils import Question
+from flask import Flask, render_template, request, jsonify
+from .question import Question
+from .answer import Answer
 
 APP = Flask(__name__)
-
-# Config options - Make sure you created a 'config.py' file.
+#  'config.py' file a completer.
 APP.config.from_object('config')
 
 
@@ -16,27 +16,30 @@ def index():
     """ main route """
     return make_index()
 
-@APP.route('/ask', methods=['POST'])
+
+@APP.route('/ask', methods=['GET', 'POST'])
 def ask():
-    """ pass asking question to be answered """
+    """ pass asking question to be answered
+        request : json value to parse
+     """
     return make_answer()
 
+
 def make_answer():
-    """ build an answer """
+    """ build an answer from a request content """
     try:
         if request.method == 'POST':
-            input_question = request.form.to_dict()
-            whole_question = input_question.popitem()[0]
-            short = Question(whole_question).get_shortened_question()
-            print("Had to answer 2 : {} ".format(short))
-    except:
-        print("Probleme")
-        return 'None'
-    return render_template('index.html')
+            input_question = (request.form.to_dict())['papyFormText']
+            answer = Answer(Question(input_question))
+            final_infos = answer.get_final_infos()
+
+    except Exception as e:
+        print("Probleme :" + e)
+        return jsonify({'output': 'An error occurs'})
+
+    return jsonify({'output': final_infos})
 
 
 def make_index():
     """ joue la page d'index """
     return render_template('index.html')
-
-
