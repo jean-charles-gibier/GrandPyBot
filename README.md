@@ -8,3 +8,6 @@ pour une installation de pytest avec le package unittest et un test minimal "pap
 Si ça marche, on rajoute le petit macaron "circle-ci" et on se lance dans le TDD à grands coups de "test cases"<br>
 A tester <br>
 https://developers.google.com/maps/documentation/javascript/geolocation?hl=fr
+
+Appli sur Heroku (dev en cours version non fonctionnelle) :
+https://yagp.herokuapp.com/
