@@ -31,6 +31,6 @@ $(document).ready(function() {
                 $('#papyChat').append( '<div class="row"><div class="offset-2 col-lg-10 text-lg-right"><div class="alert text-right" style="background: #c1f0f0; color: #0a2929;">' + data.output + '</div></div></div>');
 		    });
             // Just to maintain scroll  down
-        $('#papyChat').scrollTop = $('#papyChat').scrollHeight;
+        // $('#papyChat').scrollTop = $('#papyChat').scrollHeight;
     });
  });
