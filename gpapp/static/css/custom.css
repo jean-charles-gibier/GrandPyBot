@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 
 img.gpy_corner {
   width: 100%;
@@ -28,9 +31,17 @@ header .intro-text .name {
   height: 120px;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
-  position: relative;
-  top: 180px;
-  left: 460px;
+  position: absolute;
+  top: 2vmin;
+  left: 50%;
+}
+
+#anchor {
+    /* allow the final child to be selected as an anchor node */
+    overflow-anchor: auto;
+
+    /* anchor nodes are required to have non-zero area */
+    height: 1px;
 }
 
 @-webkit-keyframes spin {

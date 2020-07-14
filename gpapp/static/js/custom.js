@@ -4,7 +4,9 @@ $(document).ready(function() {
         e.preventDefault();
         var serialized = $(this).serialize();
         var text = $('input:text').val();
-        $('#papyChat').append( '<div class="row"> <div class="col-lg-10"> <div class="alert text-left" style="background: #0a2929; color: #c1f0f0;">'+ text +'</div></div></div>');
+        var $theLast = $('#papyChat #anchor');
+            $theLast.before( '<div class="row"> <div class="col-lg-10"> <div class="alert text-left" style="background: #0a2929; color: #c1f0f0;">'+ text +'</div></div></div>');
+        $('#papyChat').scrollTop($('#papyChat').height() +10000);
         $('input:text').val('');
 
        $.ajax({
@@ -28,9 +30,10 @@ $(document).ready(function() {
                }
         })
         .done(function (data) {
-                $('#papyChat').append( '<div class="row"><div class="offset-2 col-lg-10 text-lg-right"><div class="alert text-right" style="background: #c1f0f0; color: #0a2929;">' + data.output + '</div></div></div>');
+                var $theLast = $('#papyChat #anchor');
+                $theLast.before( '<div class="row"><div class="offset-2 col-lg-10 text-lg-right"><div class="alert text-right" style="background: #c1f0f0; color: #0a2929;">' + data.output + '</div></div></div>');
+                $('#papyChat').scrollTop($('#papyChat').height() +10000);
 		    });
             // Just to maintain scroll  down
-        // $('#papyChat').scrollTop = $('#papyChat').scrollHeight;
     });
  });

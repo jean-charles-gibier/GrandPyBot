@@ -3,8 +3,8 @@ Utilitaires *
  - traitement output
 """
 from .question import Question
-from .googleApi import GoogleApi
-from .wikiMediaApi import WikiMediaApi
+from .google_api import GoogleApi
+from .wiki_media_api import WikiMediaApi
 
 class Answer:
     """
