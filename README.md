@@ -12,9 +12,11 @@ https://developers.google.com/maps/documentation/javascript/geolocation?hl=fr
 Appli sur Heroku (dev en cours version non fonctionnelle) :
 https://yagp.herokuapp.com/
 
-Infos requetes :
-recupérer la page wiki en fonction d'un ou  de +ieurs mots clé 
-https://fr.wikipedia.org/w/api.php?action=opensearch&search={}&limit=1&namespace=0&format=json
-récupérer + adresse + lat/long 
+
+Infos requetes / strategie :
+D'abbord Google pour récupérer + la "fromatted adresse + lat & long<br> 
+Puis pour récupéerer la MAP cf script async defer avec  lat & long<br>
 https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=openclassroom&key=XYZIUYIUYZIUZYIUZZYZUIZYUIZY&inputtype=textquery&fields=formatted_address,geometry
-Pour récupéerer la MAP cf script async defer avec lat/long
+
+Et recupérer la page wiki en fonction d'un ou  de +ieurs mots clé constitués par la formated adress 
+https://fr.wikipedia.org/w/api.php?action=opensearch&search={}&limit=1&namespace=0&format=json
