@@ -34,8 +34,8 @@ def make_answer():
             final_infos = answer.get_final_infos()
 
     except Exception as e:
-        print("Probleme :" + e)
-        return jsonify({'output': 'An error occurs'})
+        print("Probleme :" + str(e))
+        return jsonify({'output': 'Oups ! GrandPy a eu une petite absence.'})
 
     return jsonify({'output': final_infos})
 

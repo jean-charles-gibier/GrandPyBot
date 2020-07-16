@@ -6,6 +6,7 @@ from .question import Question
 from .google_api import GoogleApi
 from .wiki_media_api import WikiMediaApi
 
+
 class Answer:
     """
     Builds an answer from question
@@ -34,4 +35,9 @@ class Answer:
         """
         prepare display values
         """
-        return self.short
+        gg_test = GoogleApi()
+        gg_answer = gg_test.findplacefromtext(self.short)
+        formatted_address = gg_answer["candidates"][0]["formatted_address"]
+        wiki_test = WikiMediaApi()
+        wiki_answer = wiki_test.opensearch(formatted_address)
+        return wiki_answer
