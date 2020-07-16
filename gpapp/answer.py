@@ -37,7 +37,9 @@ class Answer:
         """
         gg_test = GoogleApi()
         gg_answer = gg_test.findplacefromtext(self.short)
+        print('BEFORE')
         formatted_address = gg_answer["candidates"][0]["formatted_address"]
+        print('AFTER')
         wiki_test = WikiMediaApi()
         wiki_answer = wiki_test.opensearch(formatted_address)
         return wiki_answer
