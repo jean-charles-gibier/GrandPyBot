@@ -1,1 +1,17 @@
-                     Dapibus ac facilisis in
+<!--The div element for the map -->
+<div id="map"></div>
+<script>
+// Initialize and add the map
+function initMap() {
+// The location of {{ localisation }}
+var {{ localisation }} = {lat: {{ latitude }}, lng: {{ longitude }}};
+// The map, centered at {{ localisation }}
+var map = new google.maps.Map(
+  document.getElementById('map'), {zoom: 4, center: {{ localisation }}});
+// The marker, positioned at {{ localisation }}
+var marker = new google.maps.Marker({position: {{ localisation }}, map: map});
+}
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">
+</script>

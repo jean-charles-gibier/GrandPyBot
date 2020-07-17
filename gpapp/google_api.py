@@ -16,8 +16,7 @@ class GoogleApi:
         """
         Standard init
         """
-        self.latitude = 0
-        self.longitude = 0
+        pass
 
     def findplacefromtext(self, text):
         """

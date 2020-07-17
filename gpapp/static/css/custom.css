@@ -36,6 +36,12 @@ header .intro-text .name {
   left: 50%;
 }
 
+/* Set the size of the div element that contains the map */
+#map {
+height: 300px;  /* The height is 300 pixels */
+width: 100%;  /* The width is the width of the web page */
+}
+
 #anchor {
     /* allow the final child to be selected as an anchor node */
     overflow-anchor: auto;
