@@ -39,7 +39,7 @@ class Answer:
             self.latitude = gg_answer["candidates"][0]["geometry"]["location"]["lat"]
             self.longitude = gg_answer["candidates"][0]["geometry"]["location"]["lng"]
         else:
-            print("gg_answer status : '{}'".format(len(gg_answer["status"])))
+            print("gg_answer status : '{}'".format(gg_answer["status"]))
         self.gg_maps_status = gg_answer["status"]
 
     def fetch_infos_from_wiki_media(self):
