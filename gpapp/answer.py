@@ -57,6 +57,10 @@ class Answer:
             self.wiki_url = wiki_api.get_url()
             print("Get '{}' wiki_url".format(self.wiki_url))
             self.wiki_id = hashlib.md5(self.wiki_url.encode('utf-8')).hexdigest()
+        elif self.gg_maps_status == "ZERO-RESULTS":
+            print("Get wiki_question :''{}".format(wiki_question))
+            self.wiki_answer = "Ok fiston, un peu spéciale ta demande là.<br>" \
+                           "Tu as gagné, je ne trouve rien à ce sujet  ..."
         else:
             print("Get wiki_question :''{}".format(wiki_question))
             self.wiki_answer = "Ok fiston, tu m'accordes 5mn ?<br>" \
