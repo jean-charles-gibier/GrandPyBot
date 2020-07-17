@@ -33,6 +33,7 @@ class Answer:
         """
         gg_test = GoogleApi()
         gg_answer = gg_test.findplacefromtext(self.short)
+        print("Get {} gg_answer".format(len(gg_answer["candidates"])))
         if len(gg_answer["candidates"]) > 0:
             self.formatted_address = gg_answer["candidates"][0]["formatted_address"]
             self.latitude = gg_answer["candidates"][0]["geometry"]["location"]["lat"]
@@ -44,12 +45,17 @@ class Answer:
         suppress stop words (+ some) and ponctuation
         """
         wiki_api = WikiMediaApi()
+        print("Start wiki request")
         wiki_question = wiki_api.parse_address(self.formatted_address)
+        print("Get {} wiki_question(s)".format(len(wiki_question)))
         if len(wiki_question) > 0:
             self.wiki_answer = wiki_api.opensearch(wiki_question)
+            print("Get '{}' wiki_answer".format(self.wiki_answer))
             self.wiki_url = wiki_api.get_url()
+            print("Get '{}' wiki_url".format(self.wiki_url))
             self.wiki_id = hashlib.md5(self.wiki_url.encode('utf-8')).hexdigest()
         else:
+            print("Get wiki_question :''{}".format(wiki_question))
             self.wiki_answer = "Ok fiston, tu m'accordes 5mn ?<br>" \
                                "J' ai un petit souci technique là ..."
 
