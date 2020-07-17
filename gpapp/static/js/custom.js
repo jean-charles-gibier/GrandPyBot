@@ -37,3 +37,14 @@ $(document).ready(function() {
             // Just to maintain scroll  down
     });
  });
+
+// Initialize and add the map
+function initMap( lat, lng, elt_id) {
+  // The location of center
+  var center = {lat: lat, lng: lng};
+  // The map, centered at center
+  map = new google.maps.Map(
+      document.getElementById(elt_id), {zoom: 12, center: center});
+  // The marker, positioned at center
+  var marker = new google.maps.Marker({position: center, map: map});
+}

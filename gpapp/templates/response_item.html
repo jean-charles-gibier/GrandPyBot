@@ -3,17 +3,6 @@
 <div id="map_{{ localisation }}" class="map"></div>
 <script>
 // Initialize and add the map
-function initMap_{{ localisation }}() {
-// The location of {{ localisation }}
-var {{ localisation }} = {lat: {{ latitude }}, lng: {{ longitude }}};
-// The map, centered at {{ localisation }}
-var map = new google.maps.Map(
-  document.getElementById('map_{{ localisation }}'), {zoom: 13, center: {{ localisation }}});
-// The marker, positioned at {{ localisation }}
-var marker = new google.maps.Marker({position: {{ localisation }}, map: map});
-}
-</script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap_{{ localisation }}">
+     initMap( {{ latitude }}, {{ longitude }}, "map_{{ localisation }}");
 </script>
 {% endblock content %}

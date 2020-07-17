@@ -87,6 +87,9 @@ class WikiMediaApi:
             (address, zip_town, country) = address_chunks
         elif nb_chunks == 2:
             (zip_town, country) = address_chunks
+        elif nb_chunks == 1:
+            (zip_town,) = address_chunks
+            (country,) = address_chunks
         # on supprime les digits de la ville
         town = ''.join([i for i in zip_town if not i.isdigit()])
         #  on supprime les digits de l'address'
@@ -96,9 +99,11 @@ class WikiMediaApi:
             address_to_check.append("{} ({})".format(alter_address.strip(), town.strip()))
             address_to_check.append("{}".format(address.strip()))
             address_to_check.append("{}".format(alter_address.strip()))
-        elif nb_chunks == 3:
+        elif nb_chunks == 3 or nb_chunks == 3:
             address_to_check.append("{} ({})".format(address.strip(), town.strip()))
             address_to_check.append("{}".format(address.strip()))
         if town.strip() != "":
             address_to_check.append("{}".format(town.strip()))
+        if country.strip() != "":
+            address_to_check.append("{}".format(country.strip()))
         return address_to_check
