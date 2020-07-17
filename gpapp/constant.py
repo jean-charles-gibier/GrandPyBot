@@ -3,9 +3,11 @@
 constantes yagp
 """
 
-KEY_API_GG = 'AIzaSyDc8-o_WSdYwv8L3iFSWJVoYwj-7ls4dTM'
+# KEY pour charger la map
+KEY_API_MAP_LOAD_GG = 'AIzaSyAObn2Vc7C154ZfoVKPPMLKq6pustU_fbg'
 
-URL_API_GG_FMT = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?' \
+# URL pour findplace (serveur)
+URL_API_FIND_PLACE_GG = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?' \
                  'input={}&key={}&inputtype=textquery&fields=formatted_address,geometry'
 
 URL_API_WIKI_FMT = 'https://fr.wikipedia.org/w/api.php?' \

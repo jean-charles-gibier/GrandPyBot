@@ -2,21 +2,16 @@
 All the stuff for fetching info on gg API
 """
 import json
+import os
 import time
 import urllib.request
 from gpapp import constant
-
 
 
 class GoogleApi:
     """
      main GG class
     """
-    def __init__(self):
-        """
-        Standard init
-        """
-        pass
 
     def findplacefromtext(self, text):
         """
@@ -25,12 +20,26 @@ class GoogleApi:
         """
         try:
             gg_text = urllib.parse.quote(text)
-            gg_url = constant.URL_API_GG_FMT.format(gg_text, constant.KEY_API_GG)
+            gg_key_api_find_place = os.getenv('GG_KEY_API_FIND_PLACE')
+            gg_url = constant.URL_API_FIND_PLACE_GG.format(
+                gg_text,
+                gg_key_api_find_place)
             response = urllib.request.urlopen(gg_url)
             if response is not None:
                 return json.loads(response.read().decode("utf8"))
-        except urllib.error.HTTPError as e:
-            print("Request error '{}', sleeping 5s".format(e.code))
-            time.sleep(5)
-        return {"candidates": [{"formatted_address": ""}], "status": "KO"}
-
+        except urllib.error.HTTPError as err:
+            print("Request error '{}', sleeping 5s".format(err.code))
+            time.sleep(1)
+        return {
+            "candidates": [
+                {
+                    "formatted_address": "North pole",
+                    "geometry":
+                        {
+                            "location":
+                                {"lat": 90,
+                                 "lng": 0
+                                 }
+                        }
+                }
+            ], "status": "KO"}

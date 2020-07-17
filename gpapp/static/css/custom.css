@@ -37,7 +37,7 @@ header .intro-text .name {
 }
 
 /* Set the size of the div element that contains the map */
-#map {
+.map {
 height: 300px;  /* The height is 300 pixels */
 width: 100%;  /* The width is the width of the web page */
 }

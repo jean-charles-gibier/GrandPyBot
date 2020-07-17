@@ -30,11 +30,10 @@ def make_answer():
     try:
         if request.method == 'POST':
             input_question = (request.form.to_dict())['papyFormText']
-            answer = Answer(Question(input_question))
-            final_infos = answer.get_final_infos()
+            final_infos = Answer(Question(input_question)).get_final_infos()
 
-    except Exception as e:
-        print("Probleme :" + str(e))
+    except Exception as err:
+        print("Probleme :" + str(err))
         return jsonify({'output': 'Oups ! GrandPy a eu une petite absence.'})
 
     return jsonify({'output': final_infos})

@@ -4,9 +4,8 @@ Utilitaires *
 """
 import hashlib
 import random
-# from urllib.parse import urlencode
 import gpapp.constant
-from flask import render_template, jsonify
+from flask import render_template
 from .google_api import GoogleApi
 from .wiki_media_api import WikiMediaApi
 
@@ -19,7 +18,6 @@ class Answer:
     def __init__(self, question):
         """ init """
         self.short = question.get_shortened_question()
-        # get info from GG
         self.latitude = 0
         self.longitude = 0
         self.formatted_address = ""
@@ -27,6 +25,7 @@ class Answer:
         self.wiki_id = ""
         self.wiki_answer = ""
         self.final_answer = ""
+        self.gg_maps_status = ""
 
     def fetch_infos_from_google_map(self):
         """
@@ -34,9 +33,11 @@ class Answer:
         """
         gg_test = GoogleApi()
         gg_answer = gg_test.findplacefromtext(self.short)
-        self.formatted_address = gg_answer["candidates"][0]["formatted_address"]
-        self.latitude = gg_answer["candidates"][0]["geometry"]["location"]["lat"]
-        self.longitude = gg_answer["candidates"][0]["geometry"]["location"]["lng"]
+        if len(gg_answer["candidates"]) > 0:
+            self.formatted_address = gg_answer["candidates"][0]["formatted_address"]
+            self.latitude = gg_answer["candidates"][0]["geometry"]["location"]["lat"]
+            self.longitude = gg_answer["candidates"][0]["geometry"]["location"]["lng"]
+        self.gg_maps_status = gg_answer["status"]
 
     def fetch_infos_from_wiki_media(self):
         """
@@ -44,10 +45,13 @@ class Answer:
         """
         wiki_api = WikiMediaApi()
         wiki_question = wiki_api.parse_address(self.formatted_address)
-        self.wiki_answer = wiki_api.opensearch(wiki_question)
-        self.wiki_url = wiki_api.get_url()
-        self.wiki_id = hashlib.md5(self.wiki_url.encode('utf-8')).hexdigest()
-
+        if len(wiki_question) > 0:
+            self.wiki_answer = wiki_api.opensearch(wiki_question)
+            self.wiki_url = wiki_api.get_url()
+            self.wiki_id = hashlib.md5(self.wiki_url.encode('utf-8')).hexdigest()
+        else:
+            self.wiki_answer = "Ok fiston, tu m'accordes 5mn ?<br>" \
+                               "J' ai un petit souci technique là ..."
 
     def get_barratin(self):
         """
@@ -68,14 +72,14 @@ class Answer:
         self.fetch_infos_from_wiki_media()
         if not self.wiki_answer.startswith("Ok fiston"):
             self.final_answer = \
-                "{} {}<br><br>{}<br>{}<br><a href='{}'>[Lire le suite sur wikipedia]</a>" \
+                "{} {}<br><br>{}<br>{}<br><a href='{}'>[Lire la suite sur wikipedia]</a>" \
                     .format(self.get_barratin(), self.formatted_address,
                             render_template('response_item.html',
                                             localisation=self.wiki_id,
                                             latitude=self.latitude,
                                             longitude=self.longitude,
-                                            api_key=gpapp.constant.KEY_API_GG
-                                             ),
+                                            api_key=gpapp.constant.KEY_API_MAP_LOAD_GG
+                                            ),
                             self.wiki_answer, self.wiki_url)
         else:
             self.final_answer = self.wiki_answer

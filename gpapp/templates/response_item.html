@@ -1,17 +1,19 @@
+{% block content %}
 <!--The div element for the map -->
-<div id="map"></div>
+<div id="map_{{ localisation }}" class="map"></div>
 <script>
 // Initialize and add the map
-function initMap() {
+function initMap_{{ localisation }}() {
 // The location of {{ localisation }}
 var {{ localisation }} = {lat: {{ latitude }}, lng: {{ longitude }}};
 // The map, centered at {{ localisation }}
 var map = new google.maps.Map(
-  document.getElementById('map'), {zoom: 4, center: {{ localisation }}});
+  document.getElementById('map_{{ localisation }}'), {zoom: 13, center: {{ localisation }}});
 // The marker, positioned at {{ localisation }}
 var marker = new google.maps.Marker({position: {{ localisation }}, map: map});
 }
 </script>
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap_{{ localisation }}">
 </script>
+{% endblock content %}

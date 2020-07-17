@@ -6,23 +6,25 @@ import re
 import time
 import wikipediaapi
 
+
 class WikiMediaApi:
     """
     main wiki class
     """
+
     def __init__(self):
         """
         Standard init
         """
         self.content = None
-        self.id = ""
+        self.ident = ""
         self.wiki_wiki = wikipediaapi.Wikipedia('fr')
 
     def get_id(self):
         """
         id unique de l'adresse selectionnee
         """
-        return self.id
+        return self.ident
 
     def opensearch(self, candidates):
         """
@@ -33,25 +35,17 @@ class WikiMediaApi:
                 self.content = self.wiki_wiki.page(text)
                 if self.content.exists():
                     return self.tokenize(self.content.text, 3)
-        except Exception as e:
-            print("Request error '{}', sleeping 5s".format(e))
+        except Exception as err:
+            print("Request error '{}', sleeping 5s".format(err))
             time.sleep(1)
         return candidates[0] if len(candidates) > 0 else \
             "Ok fiston tu m'as collé, je ne trouve rien !"
-
 
     def get_url(self):
         """
         return current url subject
         """
-        try:
-            test = self.content.fullurl
-            return test
-        except Exception as e:
-            print("Request error '{}', sleeping 5s".format(e))
-            time.sleep(1)
-        return ""
-
+        return self.content.fullurl
 
     def tokenize(self, data, nb_sentences):
         """
@@ -59,7 +53,7 @@ class WikiMediaApi:
         to take the firsts nb_sentences
         """
         sentences = re.split(r'\.[ \n]', data)[0:nb_sentences]
-        return ". ".join(sentences)+"."
+        return ". ".join(sentences) + "."
 
     def parse_address(self, to_parse):
         """
@@ -105,10 +99,6 @@ class WikiMediaApi:
         elif nb_chunks == 3:
             address_to_check.append("{} ({})".format(address.strip(), town.strip()))
             address_to_check.append("{}".format(address.strip()))
-        else:
+        if town.strip() != "":
             address_to_check.append("{}".format(town.strip()))
         return address_to_check
-
-
-
-
