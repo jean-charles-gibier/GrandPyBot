@@ -3,6 +3,7 @@ Utilitaires *
  - traitement output
 """
 import hashlib
+import os
 import random
 import gpapp.constant
 from flask import render_template
@@ -78,6 +79,8 @@ class Answer:
         """
         self.fetch_infos_from_google_map()
         self.fetch_infos_from_wiki_media()
+        gg_key_api_map_load = os.getenv('GG_KEY_API_MAP_LOAD')
+        print("GG_KEY_API_MAP_LOAD :'{}'".format(gg_key_api_map_load))
         if not self.wiki_answer.startswith("Ok fiston"):
             self.final_answer = \
                 "{} {}<br><br>{}<br>{}<br><a href='{}'>[Lire la suite sur wikipedia]</a>" \
@@ -86,7 +89,7 @@ class Answer:
                                             localisation=self.wiki_id,
                                             latitude=self.latitude,
                                             longitude=self.longitude,
-                                            api_key=gpapp.constant.KEY_API_MAP_LOAD_GG
+                                            api_key=gg_key_api_map_load
                                             ),
                             self.wiki_answer, self.wiki_url)
         else:
