@@ -1,7 +1,6 @@
 """
 All the stuff for fetching info on wiki API
 """
-import hashlib
 import re
 import time
 import wikipediaapi
@@ -80,7 +79,7 @@ class WikiMediaApi:
         # on compte
         nb_chunks = len(address_chunks)
         # si on a  plus de  3 chunks => autre adresse, adresse , CP Ville, PAYS
-        if nb_chunks > 3:
+        if nb_chunks == 4:
             (alter_address, address, zip_town, country) = address_chunks
         # si on a 3 chunks => adresse , CP Ville, PAYS
         if nb_chunks == 3:
@@ -99,7 +98,7 @@ class WikiMediaApi:
             address_to_check.append("{} ({})".format(alter_address.strip(), town.strip()))
             address_to_check.append("{}".format(address.strip()))
             address_to_check.append("{}".format(alter_address.strip()))
-        elif nb_chunks == 3 or nb_chunks == 3:
+        elif nb_chunks in (2, 3):
             address_to_check.append("{} ({})".format(address.strip(), town.strip()))
             address_to_check.append("{}".format(address.strip()))
         if town.strip() != "":

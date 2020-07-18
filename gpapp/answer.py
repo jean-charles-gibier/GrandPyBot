@@ -5,7 +5,6 @@ Utilitaires *
 import hashlib
 import os
 import random
-import gpapp.constant
 from flask import render_template
 from .google_api import GoogleApi
 from .wiki_media_api import WikiMediaApi
@@ -63,7 +62,7 @@ class Answer:
                            "Tu as gagné, je ne trouve rien à ce sujet  ..."
         else:
             print("Get wiki_question :''{}".format(wiki_question))
-            self.wiki_answer = "Ok fiston, tu m'accordes 5mn ?<br>" \
+            self.wiki_answer = "Ok fiston, ta question semble ambigue.<br>" \
                                "J' ai un petit souci technique là ..."
 
     def get_barratin(self):
@@ -71,10 +70,10 @@ class Answer:
         selectionne une entrée en matière au hasard
         """
         return random.choice([
-            "Attends voir mon grand... Ah oui :",
-            "Yep, c'est bon, je l'ai :",
-            "Bien sûr mon poussin :",
-            "Mmmh, si je ne me trompe pas :"
+            "Attends voir mon grand... Ah voilà, je t'explique :",
+            "Yep, c'est bon, je l'ai,  or donc :",
+            "Bien sûr mon poussin, alors :",
+            "Mmmh, si je ne me trompe pas ça doit être ça :"
         ])
 
     def get_final_infos(self):
