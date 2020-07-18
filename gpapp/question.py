@@ -18,9 +18,9 @@ class Question:
                         'dis', 'moi', 'he', 'au', 'fait', 'ca', 'va', 'se',
                         'bon', 'quel', 'quelle', 'où', 'est-ce', 'que', 'ce',
                         'connais', 'connaissez', 'sais', 'savez', 'saurais',
-                        'grandpy', 'grand-père', 'papy', 'cher', 'mec',
+                        'grandpy', 'grand-père', 'papy', 'cher', 'mec', 'ou',
                         'adresse', 'lieu', 'localisation', 'endroit', 'trouve',
-                        'aller', 'vers'
+                        'aller', 'vers', 'comment'
                         }
         self.stop_words = set(get_stop_words('fr'))
         self.stop_words.update(common_words)
