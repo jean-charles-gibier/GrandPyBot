@@ -1,6 +1,8 @@
 """
 vue de l'application
 """
+import os
+
 from flask import Flask, render_template, request, jsonify
 from .question import Question
 from .answer import Answer
@@ -41,4 +43,6 @@ def make_answer():
 
 def make_index():
     """ joue la page d'index """
-    return render_template('index.html')
+    gg_key_api_map_load = os.getenv('GG_KEY_API_MAP_LOAD')
+    print("GG_KEY_API_MAP_LOAD :'{}'".format(gg_key_api_map_load))
+    return render_template('index.html', api_key=gg_key_api_map_load)
