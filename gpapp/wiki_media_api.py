@@ -35,7 +35,7 @@ class WikiMediaApi:
                 if self.content.exists():
                     return self.tokenize(self.content.text, 3)
         except Exception as err:
-            print("Request error '{}', sleeping 5s".format(err))
+            print("Request error '{}', sleeping 1s".format(err))
             time.sleep(1)
         return candidates[0] if len(candidates) > 0 else \
             "Ok fiston tu m'as collé, je ne trouve rien !"
@@ -94,13 +94,28 @@ class WikiMediaApi:
         #  on supprime les digits de l'address'
         address = ''.join([i for i in address if not i.isdigit()])
         if nb_chunks > 3:
-            address_to_check.append("{} ({})".format(address.strip(), town.strip()))
-            address_to_check.append("{} ({})".format(alter_address.strip(), town.strip()))
+            address_to_check.append(
+                "{} ({})".format(
+                    address.strip(),
+                    town.strip()))
+            address_to_check.append(
+                "{} ({})".format(
+                    alter_address.strip(),
+                    town.strip()))
             address_to_check.append("{}".format(address.strip()))
             address_to_check.append("{}".format(alter_address.strip()))
-        elif nb_chunks in (2, 3):
-            address_to_check.append("{} ({})".format(address.strip(), town.strip()))
+        elif nb_chunks > 2:
+            address_to_check.append(
+                "{} ({})".format(
+                    address.strip(),
+                    town.strip()))
             address_to_check.append("{}".format(address.strip()))
+        elif nb_chunks > 1:
+            address_to_check.append(
+                "{} ({})".format(
+                    town.strip(),
+                    country.strip()))
+            address_to_check.append("{}".format(town.strip()))
         if town.strip() != "":
             address_to_check.append("{}".format(town.strip()))
         if country.strip() != "":

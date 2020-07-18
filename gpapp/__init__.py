@@ -8,6 +8,7 @@ import click
 from .views import APP
 from .question import Question
 
+
 @APP.cli.command()
 @click.argument("question")
 def ask_from_cli(question):

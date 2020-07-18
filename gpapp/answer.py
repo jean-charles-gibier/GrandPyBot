@@ -55,11 +55,12 @@ class Answer:
             print("Get '{}' wiki_answer".format(self.wiki_answer))
             self.wiki_url = wiki_api.get_url()
             print("Get '{}' wiki_url".format(self.wiki_url))
-            self.wiki_id = hashlib.md5(self.wiki_url.encode('utf-8')).hexdigest()
+            self.wiki_id = hashlib.md5(
+                self.wiki_url.encode('utf-8')).hexdigest()
         elif self.gg_maps_status == "ZERO-RESULTS":
             print("Get wiki_question :''{}".format(wiki_question))
             self.wiki_answer = "Ok fiston, un peu spéciale ta demande là.<br>" \
-                           "Tu as gagné, je ne trouve rien à ce sujet  ..."
+                "Tu as gagné, je ne trouve rien à ce sujet  ..."
         else:
             print("Get wiki_question :''{}".format(wiki_question))
             self.wiki_answer = "Ok fiston, ta question semble ambigue.<br>" \
@@ -87,14 +88,14 @@ class Answer:
         if not self.wiki_answer.startswith("Ok fiston"):
             self.final_answer = \
                 "{} {}<br><br>{}<br>{}<br><a href='{}'>[Lire la suite sur wikipedia]</a>" \
-                    .format(self.get_barratin(), self.formatted_address,
-                            render_template('response_item.html',
-                                            localisation=self.wiki_id,
-                                            latitude=self.latitude,
-                                            longitude=self.longitude,
-                                            api_key=gg_key_api_map_load
-                                            ),
-                            self.wiki_answer, self.wiki_url)
+                .format(self.get_barratin(), self.formatted_address,
+                        render_template('response_item.html',
+                                        localisation=self.wiki_id,
+                                        latitude=self.latitude,
+                                        longitude=self.longitude,
+                                        api_key=gg_key_api_map_load
+                                        ),
+                        self.wiki_answer, self.wiki_url)
         else:
             self.final_answer = self.wiki_answer
         return self.final_answer
