@@ -11,7 +11,7 @@ https://yagp.herokuapp.com/
 
 Acces tableau Kanban
 https://jcgibierscompany.atlassian.net/secure/RapidBoard.jspa?rapidView=3&projectKey=GRAN&selectedIssue=GRAN-14
-(autorisation necessaire demandez mmoi)
+(autorisation necessaire: demandez moi)
 
 Infos requetes / strategie :
 1 requête Google Place API pour récupérer + la "fromatted adresse + lat & long<br> 
