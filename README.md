@@ -2,10 +2,11 @@
 status : [![CircleCI](https://circleci.com/gh/jean-charles-gibier/GrandPyBot.svg?style=shield)](https://app.circleci.com/pipelines/github/jean-charles-gibier/GrandPyBot)
 
 ## La démarche
-C'est un projet axé sur le TDD principalement, donc dans un premier temps on va brancher Circle-ci sur ce projet. <br>
-Avec un fichier requirements.txt issu du cours 'flask' qui installera le contexte <br>
-pour une installation de pytest avec le package unittest et un jeu de test minimal "papa/maman" pour vérifier que le principe est ok<br>
-Si ça marche, on rajoute le petit macaron "circle-ci" et on se lance dans le TDD à grands coups de "test cases"<br>
+Le projet #7 de OC. C'est un projet principalement axé sur le TDD, Ajax et Flask.<br>
+Le brief est disponible [ici](https://openclassrooms.com/fr/paths/68/projects/158/assignment).<br>
+Pour satisfaire l'exigence du TDD le projet est branché sur le systeme d'integration Circle-ci. <br>
+Un fichier requirements.txt installe le contexte pytest avec le package unittest et un jeu de test sur les fonctions principales pour vérifier que le principe est respecté<br>
+<br>
 Appli sur Heroku :
 https://yagp.herokuapp.com/
 
