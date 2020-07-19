@@ -32,6 +32,7 @@ class Answer:
         getter info from gg (gps coordinates 1rst)
         """
         gg_test = GoogleApi()
+        print("Ask 2 gg '{}' ".format(self.short))
         gg_answer = gg_test.findplacefromtext(self.short)
         print("Get {} gg_answer".format(len(gg_answer["candidates"])))
         if len(gg_answer["candidates"]) > 0:
@@ -57,7 +58,7 @@ class Answer:
             print("Get '{}' wiki_url".format(self.wiki_url))
             self.wiki_id = hashlib.md5(
                 self.wiki_url.encode('utf-8')).hexdigest()
-        elif self.gg_maps_status == "ZERO-RESULTS":
+        elif self.gg_maps_status == "ZERO_RESULTS":
             print("Get wiki_question :''{}".format(wiki_question))
             self.wiki_answer = "Ok fiston, un peu spéciale ta demande là.<br>" \
                 "Tu as gagné, je ne trouve rien à ce sujet  ..."
