@@ -29,7 +29,7 @@ class GoogleApi:
             if response is not None:
                 return json.loads(response.read().decode("utf8"))
         except urllib.error.HTTPError as err:
-            print("Request error '{}', sleeping 5s".format(err.code))
+            print("Request error '{}', sleeping 1s".format(err.code))
             time.sleep(1)
         return {
             "candidates": [
