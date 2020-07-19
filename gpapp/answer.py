@@ -71,10 +71,11 @@ class Answer:
         selectionne une entrée en matière au hasard
         """
         return random.choice([
-            "Attends voir mon grand... Ah voilà, je t'explique :",
-            "Yep, c'est bon, je l'ai,  or donc :",
-            "Bien sûr mon poussin, alors :",
-            "Mmmh, si je ne me trompe pas ça doit être ça :"
+            "Attends voir mon grand... l'adresse c'est :<br>",
+            "Ah voilà ! Je t'explique où c'est :<br>",
+            "Yep, je l'ai ! Or donc voici l'adresse :<br>",
+            "C'est bon poussin, voilà ce que tu cherches :<br>",
+            "Mmmh, si je ne me trompe pas c'est ici :<br>"
         ])
 
     def get_final_infos(self):
