@@ -16,6 +16,7 @@ https://jcgibierscompany.atlassian.net/secure/RapidBoard.jspa?rapidView=3&projec
 
 Infos requetes / strategie :
 1 requête Google Place API pour récupérer + la "fromatted adresse + lat & long<br> 
-Puis pour récupéerer la MAP (cf script async defer avec  lat & long)<br>
-Et recupérer la page wiki en fonction d'un ou de +ieurs mots clé constitués par la formated adress 
+Puis charger la MAP (cf script async defer avec  lat & long)<br>
+Enfin recupérer la page wiki en fonction d'un ou de +ieurs mots clé constitués par la formated adress 
 https://fr.wikipedia.org/w/api.php?action=opensearch&search={}&limit=1&namespace=0&format=json
+
