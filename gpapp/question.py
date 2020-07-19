@@ -21,7 +21,8 @@ class Question:
                         'grandpy', 'grand-père', 'papy', 'cher', 'mec', 'ou',
                         'adresse', 'lieu', 'localisation', 'endroit', 'trouve',
                         'aller', 'vers', 'comment', 'stp', 'wesh', 's\'il',
-                        'te', 'plait', 'steup', 'gd', 'py', 'gdpy'
+                        'te', 'plait', 'steup', 'gd', 'py', 'gdpy', 'cherche',
+                        'trouve', 'chercher', 'trouver'
                         }
         self.stop_words = set(get_stop_words('fr'))
         self.stop_words.update(common_words)
@@ -43,9 +44,10 @@ class Question:
         question = (self.original_question).lower()
         question = re.sub("[']", ' ', question)
         listed_question = re.findall(r"[\w]+", question)
-        listed_question.sort(key=lambda s: -len(s))
-        self.filtered_question = " ".join(list(set(listed_question) -
-                                               set(self.stop_words)))
+        shortened_list = list(set(listed_question) -
+             set(self.stop_words))
+        shortened_list.sort(key=lambda s: -len(s))
+        self.filtered_question = " ".join(shortened_list)
         return self.filtered_question
 
     def do_parse(self):
