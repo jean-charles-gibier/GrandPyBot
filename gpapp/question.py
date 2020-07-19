@@ -20,7 +20,8 @@ class Question:
                         'connais', 'connaissez', 'sais', 'savez', 'saurais',
                         'grandpy', 'grand-père', 'papy', 'cher', 'mec', 'ou',
                         'adresse', 'lieu', 'localisation', 'endroit', 'trouve',
-                        'aller', 'vers', 'comment'
+                        'aller', 'vers', 'comment', 'stp', 'wesh', 's\'il',
+                        'te', 'plait', 'steup'
                         }
         self.stop_words = set(get_stop_words('fr'))
         self.stop_words.update(common_words)
