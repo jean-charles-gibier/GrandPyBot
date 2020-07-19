@@ -21,7 +21,7 @@ class Question:
                         'grandpy', 'grand-père', 'papy', 'cher', 'mec', 'ou',
                         'adresse', 'lieu', 'localisation', 'endroit', 'trouve',
                         'aller', 'vers', 'comment', 'stp', 'wesh', 's\'il',
-                        'te', 'plait', 'steup'
+                        'te', 'plait', 'steup', 'gd', 'py', 'gdpy'
                         }
         self.stop_words = set(get_stop_words('fr'))
         self.stop_words.update(common_words)
