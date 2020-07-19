@@ -43,6 +43,7 @@ class Question:
         question = (self.original_question).lower()
         question = re.sub("[']", ' ', question)
         listed_question = re.findall(r"[\w]+", question)
+        listed_question.sort(key=lambda s: -len(s))
         self.filtered_question = " ".join(list(set(listed_question) -
                                                set(self.stop_words)))
         return self.filtered_question
